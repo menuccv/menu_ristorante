@@ -635,3 +635,46 @@ Data aggiornamento: 2026-03-26
    - output TypeScript (`*.tsbuildinfo`)
    - segreti locali (`.env`, `.env.*`) mantenendo `!.env.example`
 5. Nessun commit e nessun push eseguiti.
+
+## Aggiornamento successivo - Procedura standard commit/push manuale
+
+Data aggiornamento: 2026-03-26
+
+1. Consolidata la procedura Git manuale su branch unico `main` con remote canonico `origin`.
+2. Impostati guardrail locali repository:
+   - `push.default = simple`
+   - `pull.ff = only`
+3. Aggiornato `PROJECT_SETUP.md` con workflow operativo minimo (`status -> add -> commit -> push`) e nota esplicita su assenza automazioni.
+4. Confermata separazione sicurezza: nessuna credenziale/token nel frontend; auth dipendente dall'ambiente locale.
+5. In questo intervento non sono stati eseguiti commit/push aggiuntivi.
+
+## Aggiornamento successivo - EXTERNAL: riduzione margine logo->menu
+
+Data aggiornamento: 2026-03-26
+
+1. Ridotto leggermente solo lo spazio sotto header EXTERNAL (`padding-bottom` da `8mm` a `6.8mm`).
+2. Menu esterno alzato visivamente senza modificare il logo (`size`, `width`, `max-height` invariati).
+
+## Aggiornamento successivo - Fix regressione compattazione IT/EN
+
+Data aggiornamento: 2026-03-26
+
+1. Individuata causa regressione: dopo l'introduzione del wrapper `.a4-sheet__content`, la distribuzione verticale delle categorie interne era rimasta sul container `.a4-sheet__body`, che ora contiene un solo figlio.
+2. Effetto: i `menu-section` non ricevevano piu la logica `flex + section-weight`, con risultato compattato in alto e spazio vuoto eccessivo prima del footer.
+3. Fix strutturale applicato in `menu-template.css`:
+   - `.a4-sheet--internal .a4-sheet__body` mantiene solo metriche e padding
+   - `.a4-sheet--internal .a4-sheet__content` diventa il contenitore flex canonico delle categorie (gap + min-height).
+4. EXTERNAL non modificata.
+
+## Aggiornamento successivo - Audit enterprise completo e consolidamento
+
+Data aggiornamento: 2026-03-26
+
+1. Rieseguiti quality gate e build con esito verde.
+2. Verificata coerenza architetturale: nessuna logica business alterata, nessuna modifica UX/layout fuori scope.
+3. Individuata non conformita governance: `src/styles/menu-template.css` oltre limite 350 righe.
+4. Modularizzazione neutra applicata:
+   - regole EXTERNAL estratte in `src/styles/external-menu-template.css`
+   - import aggiunto in `src/styles/index.css`
+   - `menu-template.css` riportato entro soglia.
+5. Aggiornati file informativi principali (`PROJECT_SETUP.md`, `DNA/03`, `DNA/10`, `DNA/13`) con stato reale post-consolidamento.

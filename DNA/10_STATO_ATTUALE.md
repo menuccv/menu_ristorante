@@ -16,6 +16,9 @@ Stato operativo avanzato e stabile su base frontend-only, con flusso completo da
 - Traduzione locale titoli sezione (modale `Translate Titoli` + persistenza localStorage).
 - Controlli contenuto con persistenza locale (zoom, offset, font, interspazio).
 - Footer fisso nel template interno; template EXTERNAL senza footer tecnico.
+- CSS template consolidato in due moduli separati:
+  - `menu-template.css` (logica IT/EN + regole condivise foglio A4)
+  - `external-menu-template.css` (solo EXTERNAL)
 - Regola layout categoria consolidata:
   - distanza titolo->primo piatto uniforme
   - distanza titolo->primo piatto invariata anche quando cambia `Interspazio righe`
@@ -28,11 +31,13 @@ Stato operativo avanzato e stabile su base frontend-only, con flusso completo da
   - icone statiche ottimizzate (`192`, `512`, `apple-touch-icon`, `favicon`)
   - logo esterno statico dedicato (`public/logo_ccv.png`)
   - meta tag head coerenti per Safari iOS/iPadOS/macOS
+- Flusso Git operativo consolidato su `main` con remote canonico e workflow manuale commit/push.
 
 ## Qualita tecnica verificata
 
 - `npm run quality`: OK
 - `npm run build`: OK
+- Nessun file oltre governance 350 righe.
 
 ## Controllo continuo disponibile
 

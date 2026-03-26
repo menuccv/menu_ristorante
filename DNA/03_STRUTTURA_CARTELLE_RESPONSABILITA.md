@@ -17,4 +17,4 @@
 - `src/print/templates/`: layout stampa IT/EN e EXTERNAL.
 - `src/print/utils/`: utility di raggruppamento contenuti + risoluzione titoli sezione.
 - `src/state/`: default settings, config controlli contenuto, traduzioni titoli sezione, localStorage.
-- `src/styles/`: stile shell, template, stampa.
+- `src/styles/`: stile shell, template interno, template EXTERNAL dedicato e stampa.

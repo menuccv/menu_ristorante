@@ -1,0 +1,113 @@
+.a4-sheet--external .a4-sheet__body {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: 273.5mm;
+}
+
+.external-menu {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6.4mm;
+}
+
+.external-menu__header {
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 6.8mm;
+  display: grid;
+  justify-items: center;
+}
+
+.external-menu__logo {
+  width: 58mm;
+  height: auto;
+  max-height: 10mm;
+  object-fit: contain;
+  display: block;
+}
+
+.external-menu__section {
+  margin: 0;
+  display: grid;
+  row-gap: 2.6mm;
+  padding-bottom: 0.6mm;
+}
+
+.external-menu__section-title {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2.4mm;
+  padding-bottom: 0;
+  font-family: 'Playfair Display';
+  font-size: calc(1.12rem * var(--menu-content-font-scale));
+  line-height: calc(1.1 * var(--menu-content-line-height-scale));
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sheet-ink-900);
+}
+
+.external-menu__section-title::before,
+.external-menu__section-title::after {
+  content: '';
+  height: var(--section-title-line-thickness);
+  background: var(--section-title-line-color);
+}
+
+.external-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.15mm;
+}
+
+.external-menu__item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 2.6mm;
+  align-items: start;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.external-menu__item-copy {
+  display: grid;
+  gap: 0.3mm;
+}
+
+.external-menu__item-title-it {
+  font-family: 'Playfair Display';
+  font-size: calc(3.23mm * var(--menu-content-font-scale));
+  line-height: calc(1.22 * var(--menu-content-line-height-scale));
+  color: var(--sheet-ink-900);
+  font-weight: 500;
+}
+
+.external-menu__item-title-en {
+  font-family: 'DM Sans';
+  font-size: calc(2.62mm * var(--menu-content-font-scale));
+  line-height: calc(1.18 * var(--menu-content-line-height-scale));
+  color: var(--sheet-ink-500);
+  font-weight: 400;
+  letter-spacing: 0.012em;
+}
+
+.external-menu__item-price {
+  font-family: 'DM Sans';
+  font-size: calc(3.06mm * var(--menu-content-font-scale));
+  line-height: calc(1.24 * var(--menu-content-line-height-scale));
+  color: var(--sheet-ink-900);
+  font-weight: 500;
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.a4-sheet--external .empty-message {
+  padding-top: 10mm;
+  text-align: center;
+}

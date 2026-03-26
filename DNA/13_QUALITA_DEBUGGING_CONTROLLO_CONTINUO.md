@@ -100,3 +100,22 @@ Correzioni strutturali:
 - `print.css`: override canonici print-only per palette e linee (inchiostro/piu leggero e linee meno spesse).
 - `print.css`: alleggeriti i pesi font in stampa per titoli, piatti, prezzi e service line footer.
 - `print.css`: introdotti hint di rendering tipografico e `print-color-adjust: economy` per ridurre resa troppo pesante.
+
+## Audit enterprise consolidato (2026-03-26, post-fix multipli)
+
+Controlli aggiuntivi eseguiti:
+
+- Riesecuzione quality gate completo (`check + lint + test`) e build produzione.
+- Verifica conflitti IT/EN vs EXTERNAL sui fogli A4.
+- Verifica governance file-length (limite 350 righe per file) post-refinement.
+
+Interventi di consolidamento:
+
+- Corretta regressione di impaginazione IT/EN: la distribuzione verticale categorie e stata riallineata al wrapper canonico `.a4-sheet__content` (dopo introduzione del wrapper zoom).
+- Modularizzazione CSS senza impatto UX: estratte regole EXTERNAL da `menu-template.css` in `external-menu-template.css` per eliminare superamento soglia linee e ridurre rischio conflitti cross-view.
+
+Esito finale:
+
+1. Qualita: `npm run quality` OK
+2. Build: `npm run build` OK
+3. Governance file-size: conforme (nessun file > 350 righe)

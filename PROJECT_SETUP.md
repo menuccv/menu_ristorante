@@ -41,7 +41,7 @@
 - `src/print/templates`: IT/EN internal template + EXTERNAL bilingual template
 - `src/print/utils`: grouping helpers for print rendering
 - `src/state`: default settings + localStorage persistence
-- `src/styles`: app shell, templates, and print CSS
+- `src/styles`: app shell, template interno (`menu-template.css`), template EXTERNAL (`external-menu-template.css`) e print CSS
 - `public`: static install assets (`manifest.webmanifest`, icone app, apple-touch-icon, favicon)
 
 ## Architecture Notes
@@ -51,3 +51,24 @@
 - A4 dimensions are set in millimeters for preview and print alignment.
 - Footer logic (allergens + bread/service lines) is built into every template from step 1.
 - Sheet sync is automatic (mount + interval + focus + visibility) with anti-overlap guard for concurrent fetch triggers.
+
+## Git Workflow (Manuale)
+
+- Branch operativo unico: `main`.
+- Remote canonico: `origin = https://github.com/menuccv/menu_ristorante.git`.
+- Guardrail locali repository:
+  - `push.default = simple`
+  - `pull.ff = only`
+- Nessuna automazione di commit/push: operazioni eseguite solo su richiesta esplicita.
+
+Passi standard:
+
+1. `git status`
+2. `git add <file...>` (oppure `git add .` solo quando validato)
+3. `git commit -m "<messaggio>"`
+4. `git push origin main` (o `--force-with-lease` solo se richiesto esplicitamente)
+
+Dipendenze ambiente locale:
+
+- Autenticazione GitHub via CLI (`gh auth login` + `gh auth setup-git`) o credenziale HTTPS equivalente.
+- Nessun token o credenziale viene salvato nel codice frontend.
