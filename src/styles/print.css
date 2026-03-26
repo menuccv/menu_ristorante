@@ -1,0 +1,93 @@
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0;
+    background: #fff;
+  }
+
+  #root {
+    min-height: auto;
+  }
+
+  .app-shell {
+    display: block;
+    min-height: auto;
+  }
+
+  .app-sidebar,
+  .device-warning,
+  .modal-overlay {
+    display: none;
+  }
+
+  .preview-pane {
+    padding: 0;
+    display: block;
+    overflow: visible;
+  }
+
+  .preview-pane__canvas {
+    display: block;
+  }
+
+  .a4-sheet {
+    --sheet-ink-900: #151515;
+    --sheet-ink-700: #2f2f2f;
+    --sheet-ink-500: #616161;
+    --rule-line-color: #acacac;
+    --rule-line-thickness: 0.16mm;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    width: 210mm;
+    min-height: 297mm;
+    break-after: page;
+    print-color-adjust: economy;
+    -webkit-print-color-adjust: economy;
+    text-rendering: geometricPrecision;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .a4-sheet__footer,
+  .menu-section,
+  .menu-item-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .a4-sheet__body {
+    overflow: visible;
+  }
+
+  .a4-sheet__content {
+    width: 100%;
+    transform: translateY(var(--menu-content-offset-y));
+    transform-origin: top left;
+  }
+
+  .a4-sheet--internal .menu-section__title,
+  .a4-sheet--external .external-menu__section-title {
+    font-weight: 400;
+  }
+
+  .a4-sheet--internal .menu-item-row__title,
+  .a4-sheet--external .external-menu__item-title-it,
+  .a4-sheet--external .external-menu__item-title-en {
+    font-weight: 400;
+  }
+
+  .a4-sheet--internal .menu-item-row__price,
+  .a4-sheet--external .external-menu__item-price {
+    font-weight: 500;
+  }
+
+  .menu-footer__service-line {
+    font-weight: 400;
+  }
+}

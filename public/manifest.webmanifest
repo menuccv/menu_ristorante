@@ -1,0 +1,25 @@
+{
+  "name": "CCV Stampa Menu iPad",
+  "short_name": "CCV Menu",
+  "description": "App frontend per preparazione e stampa menu A4 da Google Sheet in modalita read-only.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fdf9f2",
+  "theme_color": "#8b694b",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/menu.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

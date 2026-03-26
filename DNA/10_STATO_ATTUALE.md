@@ -1,0 +1,49 @@
+# Stato Attuale del Progetto
+
+## Stato generale
+
+Stato operativo avanzato e stabile su base frontend-only, con flusso completo dati->template->stampa.
+
+## Funzioni operative
+
+- App shell iPad con sidebar minimale e anteprima A4 centrale.
+- Tre viste attive (`MenuView`): `IT`, `EN`, `EXTERNAL`.
+- Etichette sidebar: `ITALIANO`, `INGLESE`, `ESTERNO`.
+- Pulsante stampa attivo (`window.print`).
+- Nessun pulsante reload manuale: sync foglio automatica.
+- Integrazione Google Sheet read-only via CSV.
+- Parsing e mapping tipizzato dei dati menu.
+- Traduzione locale titoli sezione (modale `Translate Titoli` + persistenza localStorage).
+- Controlli contenuto con persistenza locale (zoom, offset, font, interspazio).
+- Footer fisso nel template interno; template EXTERNAL senza footer tecnico.
+- Regola layout categoria consolidata:
+  - distanza titolo->primo piatto uniforme
+  - distanza titolo->primo piatto invariata anche quando cambia `Interspazio righe`
+  - stessa regola anche per `Dessert`
+  - metrica verticale guidata da `lineHeightPercent`
+  - guardrail dinamico su `fontScalePercent` x `lineHeightPercent` per evitare overlap tra categorie
+- Margini laterali foglio piu ampi e fissi, con coerenza mantenuta anche durante `Zoom Menù`.
+- Setup installazione web app consolidato:
+  - `manifest.webmanifest` attivo
+  - icone statiche ottimizzate (`192`, `512`, `apple-touch-icon`, `favicon`)
+  - logo esterno statico dedicato (`public/logo_ccv.png`)
+  - meta tag head coerenti per Safari iOS/iPadOS/macOS
+
+## Qualita tecnica verificata
+
+- `npm run quality`: OK
+- `npm run build`: OK
+
+## Controllo continuo disponibile
+
+- Test automatici con `vitest`.
+- Coverage con soglie minime configurate.
+- Formattazione coerente con `prettier`.
+- Quality gate rapido: `npm run quality`.
+- Quality gate esteso: `npm run quality:full`.
+
+## Limiti correnti noti
+
+- Taratura finale stampa su stampante target (micro-calibrazione hardware/browser) da completare.
+- Eventuali ulteriori ottimizzazioni EXTERNAL non sono priorita rispetto al menu interno IT/EN.
+- Lato EXTERNAL il logo dipende dal file statico locale dedicato (`public/logo_ccv.png`).

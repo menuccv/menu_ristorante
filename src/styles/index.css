@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+@import './app-shell.css';
+@import './menu-template.css';
+@import './print.css';
+
+:root {
+  --app-bg-1: #f7f3eb;
+  --app-bg-2: #f0e8dd;
+  --panel-bg: #fdf9f2;
+  --surface-bg: #fffdf8;
+  --ink-900: #2d241d;
+  --ink-700: #5a4a3f;
+  --ink-500: #7f6a59;
+  --line-200: #d9cdbf;
+  --line-300: #c9b8a4;
+  --accent-700: #7a5a3f;
+  --accent-600: #8b694b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100svh;
+}
+
+body {
+  font-family: 'DM Sans';
+  color: var(--ink-900);
+  background: linear-gradient(160deg, var(--app-bg-1), var(--app-bg-2));
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: 'Playfair Display';
+}
+
+p,
+ul {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+}
