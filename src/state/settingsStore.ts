@@ -1,9 +1,19 @@
 import { type AppSettings } from '../domain/menu'
+import { DEFAULT_CONTENT_CONTROLS } from './contentControls'
 import { normalizeContentControls } from './contentControls'
 import { DEFAULT_APP_SETTINGS } from './defaultSettings'
 import { normalizeSectionTitleTranslations } from './sectionTitleTranslations'
 
-const STORAGE_KEY = 'menu-print-app-settings-v1'
+const STORAGE_KEY = 'menu-print-app-settings-v3'
+const CONTENT_CONTROLS_BASELINE_VERSION = 2
+const LEGACY_STORAGE_KEYS = [
+  'menu-print-app-settings-v2',
+  'menu-print-app-settings-v1',
+] as const
+
+type PersistedAppSettings = Partial<AppSettings> & {
+  contentControlsBaselineVersion?: number
+}
 
 function mergeSettings(candidate: Partial<AppSettings> | null): AppSettings {
   return {
@@ -33,21 +43,54 @@ export function loadAppSettings(): AppSettings {
   }
 
   const serialized = window.localStorage.getItem(STORAGE_KEY)
-  if (!serialized) {
-    return DEFAULT_APP_SETTINGS
+  if (serialized) {
+    try {
+      const parsed = JSON.parse(serialized) as PersistedAppSettings
+      const shouldResetContentControls =
+        parsed.contentControlsBaselineVersion !== CONTENT_CONTROLS_BASELINE_VERSION
+
+      return mergeSettings({
+        ...parsed,
+        contentControls: shouldResetContentControls
+          ? { ...DEFAULT_CONTENT_CONTROLS }
+          : parsed.contentControls,
+      })
+    } catch {
+      return DEFAULT_APP_SETTINGS
+    }
   }
 
-  try {
-    const parsed = JSON.parse(serialized) as Partial<AppSettings>
-    return mergeSettings(parsed)
-  } catch {
-    return DEFAULT_APP_SETTINGS
+  // One-time migration: keep legacy user settings, but restore current canonical default
+  // content controls so new visual defaults apply without manual sidebar resets.
+  for (const legacyKey of LEGACY_STORAGE_KEYS) {
+    const legacySerialized = window.localStorage.getItem(legacyKey)
+    if (!legacySerialized) {
+      continue
+    }
+
+    try {
+      const legacyParsed = JSON.parse(legacySerialized) as Partial<AppSettings>
+      return mergeSettings({
+        ...legacyParsed,
+        contentControls: { ...DEFAULT_CONTENT_CONTROLS },
+      })
+    } catch {
+      continue
+    }
   }
+
+  return DEFAULT_APP_SETTINGS
 }
 
 export function saveAppSettings(settings: AppSettings): void {
   if (typeof window === 'undefined') {
     return
   }
-  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(settings))
+  window.localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({
+      ...settings,
+      contentControlsBaselineVersion: CONTENT_CONTROLS_BASELINE_VERSION,
+    }),
+  )
 }

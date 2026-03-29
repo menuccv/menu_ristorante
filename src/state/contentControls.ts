@@ -11,7 +11,7 @@ interface ContentControlConfig {
   step: number
 }
 
-const MAX_CATEGORY_LAYOUT_PRESSURE = 1.43
+const MAX_CATEGORY_LAYOUT_PRESSURE = 1.5
 
 export const CONTENT_CONTROL_CONFIGS: ContentControlConfig[] = [
   {
@@ -43,7 +43,7 @@ export const CONTENT_CONTROL_CONFIGS: ContentControlConfig[] = [
     label: 'Interspazio righe',
     unit: '%',
     min: 88,
-    max: 125,
+    max: 150,
     step: 1,
   },
 ]

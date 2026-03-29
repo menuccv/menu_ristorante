@@ -9,7 +9,7 @@
 
 ## Scripts
 
-- `npm run dev`: start development server
+- `npm run dev`: start development server (fixed `http://localhost:5001`, `strictPort`)
 - `npm run build`: type-check and production build
 - `npm run preview`: preview production build
 - `npm run check`: TypeScript check (`tsc -b`)
@@ -51,6 +51,8 @@
 - A4 dimensions are set in millimeters for preview and print alignment.
 - Footer logic (allergens + bread/service lines) is built into every template from step 1.
 - Sheet sync is automatic (mount + interval + focus + visibility) with anti-overlap guard for concurrent fetch triggers.
+- Content controls are applied to `.a4-sheet__content` (not footer) through CSS custom properties.
+- Settings persistence uses versioned key `menu-print-app-settings-v3` with baseline marker for canonical content controls defaults.
 
 ## Git Workflow (Manuale)
 

@@ -119,3 +119,36 @@ Esito finale:
 1. Qualita: `npm run quality` OK
 2. Build: `npm run build` OK
 3. Governance file-size: conforme (nessun file > 350 righe)
+
+## Audit enterprise completo (2026-03-29)
+
+Controlli eseguiti:
+
+- Full gate end-to-end: `npm run quality:full` (check + lint + test + coverage + build).
+- Revisione coerenza runtime `Sidebar -> settingsStore -> PreviewPane -> A4Sheet -> menu-template.css`.
+- Verifica ridondanze/conflitti su variabili CSS del layout categorie IT/EN.
+- Verifica file-size codice applicativo (`src`) rispetto al limite governance 350 righe.
+- Verifica asset/struttura repository per assenza di file runtime obsoleti o duplicazioni funzionali.
+
+Interventi consolidati:
+
+- `src/styles/menu-template.css`:
+  - allineata la sorgente canonica delle variabili categoria su `.a4-sheet__content` (coerente con le custom properties provenienti dalla sidebar),
+  - confermata centratura categoria (`align-content: center`) e metrica uniforme titolo->prima riga,
+  - interspazio righe piatti IT/EN calibrato al valore corrente `--category-row-gap: calc(2.1mm * var(--category-layout-scale))`.
+- `src/state/contentControls.ts`:
+  - range `lineHeightPercent` esteso a `88..150`,
+  - guardrail anti-overlap aggiornato a soglia `MAX_CATEGORY_LAYOUT_PRESSURE = 1.5`.
+- `src/state/settingsStore.ts`:
+  - persistenza versionata `menu-print-app-settings-v3`,
+  - migrazione legacy (`v2`/`v1`) con riallineamento `contentControls`,
+  - marker `contentControlsBaselineVersion = 2` per stabilizzare i default canonicali.
+- Test rinforzati su guardrail e migrazioni:
+  - `src/state/contentControls.test.ts`
+  - `src/state/settingsStore.test.ts`
+
+Esito finale audit:
+
+1. Stabilita: nessuna regressione funzionale rilevata.
+2. Qualita: `npm run quality:full` OK.
+3. Modularity/Maintainability: confermate (nessun file codice `src` oltre 350 righe).

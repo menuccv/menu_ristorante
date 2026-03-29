@@ -678,3 +678,86 @@ Data aggiornamento: 2026-03-26
    - import aggiunto in `src/styles/index.css`
    - `menu-template.css` riportato entro soglia.
 5. Aggiornati file informativi principali (`PROJECT_SETUP.md`, `DNA/03`, `DNA/10`, `DNA/13`) con stato reale post-consolidamento.
+
+## Aggiornamento successivo - Correzione centratura blocchi categoria IT/EN
+
+Data aggiornamento: 2026-03-26
+
+1. Fix applicato solo su logica interna (`IT`/`EN`) in `menu-template.css`.
+2. Riallineata la centratura verticale del body categoria:
+   - `.menu-section__content` passato a `display: grid` con `align-content: center`.
+3. Ridotta leggermente l'altezza utile del contenitore categorie (`.a4-sheet--internal .a4-sheet__content`) da `238mm` a `230mm` per evitare sezioni percepite troppo alte.
+4. Nessuna modifica alle regole EXTERNAL.
+
+## Aggiornamento successivo - Interspazio piatti IT/EN aumentato con bilanciamento categorie
+
+Data aggiornamento: 2026-03-26
+
+1. Incrementato in modo misurato l'interspazio tra righe piatti interne:
+   - `--category-row-gap`: da `1.6mm` a `1.85mm` (scalato con `lineHeight`).
+2. Ribilanciata la metrica verticale sezione per mantenere centratura:
+   - `--category-title-body-gap`: da `1.5mm` a `1.6mm`
+   - `--category-body-pad-y`: da `1.7mm` a `1.8mm`
+   - `--category-block-gap`: da `2.4mm` a `2.6mm`
+3. Fix applicato solo su IT/EN (`.a4-sheet--internal`), EXTERNAL invariata.
+
+## Aggiornamento successivo - Correzione mirata solo interspazio righe piatti IT/EN
+
+Data aggiornamento: 2026-03-26
+
+1. Ripristinati invariati i parametri categoria non richiesti (`block-gap`, `title-body-gap`, `body-pad-y`).
+2. Aumentato solo lo spazio tra righe piatti IT/EN:
+   - `--category-row-gap`: `1.6mm` -> `2.2mm` (scalato con `lineHeight`).
+3. Nessuna modifica EXTERNAL.
+
+## Aggiornamento successivo - Migrazione settings per rendere visibile il default IT/EN
+
+Data aggiornamento: 2026-03-26
+
+1. Individuata causa "modifiche non visibili": valori sidebar persistiti in `localStorage` sovrascrivevano il default aggiornato.
+2. Aggiornata chiave storage a `menu-print-app-settings-v2` con migrazione da `v1`.
+3. In migrazione vengono mantenute le impostazioni utente utili (vista, footer, traduzioni), ma i `contentControls` vengono riallineati ai default canonici.
+4. Aggiunto test dedicato in `settingsStore.test.ts` per bloccare regressioni della migrazione.
+
+## Aggiornamento successivo - Porta dev fissata a 5001
+
+Data aggiornamento: 2026-03-26
+
+1. Configurato `vite.config.ts` con server canonico:
+   - `host: 0.0.0.0`
+   - `port: 5001`
+   - `strictPort: true`
+2. Confermato che `npm run dev` non fa fallback su porte alternative.
+3. Aggiornato `PROJECT_SETUP.md` con nota operativa sulla porta fissa.
+
+## Aggiornamento successivo - Solo aumento interspazio righe piatti IT/EN
+
+Data aggiornamento: 2026-03-29
+
+1. Applicata modifica esclusivamente al template interno (`IT`/`EN`) in `src/styles/menu-template.css`.
+2. Aumentato solo `--category-row-gap`:
+   - `2.2mm` -> `2.6mm` (scalato con `lineHeight`).
+3. Mantenuti invariati:
+   - margine `titolo categoria -> prima riga piatto` (`--category-title-body-gap`)
+   - centratura verticale interna dei blocchi categoria (`.menu-section__content` con `align-content: center`)
+   - metrica tra categorie e resto impaginazione.
+
+## Aggiornamento successivo - Consolidamento interspazio/sidebar (runtime reale)
+
+Data aggiornamento: 2026-03-29
+
+1. Esteso il range UI `Interspazio righe`:
+   - `lineHeightPercent.max`: `125` -> `150` in `src/state/contentControls.ts`.
+2. Aggiornata soglia del guardrail tipografico:
+   - `MAX_CATEGORY_LAYOUT_PRESSURE`: `1.43` -> `1.5`.
+3. Hardening persistenza settings:
+   - chiave corrente `menu-print-app-settings-v3`
+   - marker `contentControlsBaselineVersion = 2`
+   - migrazione legacy supportata da `v2` e `v1` con riallineamento dei `contentControls` ai default canonici.
+4. Fix strutturale anti-conflitto CSS:
+   - variabili categoria (`--category-layout-scale`, `--category-row-gap`, ecc.) spostate da `.a4-sheet__body` a `.a4-sheet__content` per coerenza con le custom properties della sidebar.
+5. Calibrazione finale interspazio righe piatti IT/EN:
+   - `--category-row-gap` portato e rifinito fino al valore corrente `calc(2.1mm * var(--category-layout-scale))`.
+6. Copertura test aggiornata:
+   - `src/state/contentControls.test.ts`
+   - `src/state/settingsStore.test.ts`

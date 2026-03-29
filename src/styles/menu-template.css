@@ -85,21 +85,21 @@
 }
 
 .a4-sheet--internal .a4-sheet__body {
-  --category-layout-scale: var(--menu-content-line-height-scale);
-  --category-block-gap: calc(2.4mm * var(--category-layout-scale));
-  --category-title-body-gap: calc(1.5mm * var(--category-layout-scale));
-  --category-section-pad-y: calc(0.45mm * var(--category-layout-scale));
-  --category-row-gap: calc(1.6mm * var(--category-layout-scale));
-  --category-body-pad-y: calc(1.7mm * var(--category-layout-scale));
   padding-top: 1.3mm;
   padding-bottom: 44mm;
 }
 
 .a4-sheet--internal .a4-sheet__content {
+  --category-layout-scale: var(--menu-content-line-height-scale);
+  --category-block-gap: calc(2.4mm * var(--category-layout-scale));
+  --category-title-body-gap: calc(1.5mm * var(--category-layout-scale));
+  --category-section-pad-y: calc(0.45mm * var(--category-layout-scale));
+  --category-row-gap: calc(2.1mm * var(--category-layout-scale));
+  --category-body-pad-y: calc(1.7mm * var(--category-layout-scale));
   display: flex;
   flex-direction: column;
   gap: var(--category-block-gap);
-  min-height: 238mm;
+  min-height: 230mm;
 }
 
 .a4-sheet--internal .menu-section {
@@ -144,9 +144,8 @@
 }
 
 .a4-sheet--internal .menu-section__content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  display: grid;
+  align-content: center;
   padding-top: var(--category-body-pad-y);
   padding-bottom: var(--category-body-pad-y);
   min-height: 0;

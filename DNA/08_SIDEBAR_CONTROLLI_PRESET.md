@@ -8,7 +8,7 @@
   - `Zoom Menù` (85% - 115%)
   - `Sposta Menù` (-14mm - +14mm)
   - `Dimensione font` (88% - 130%)
-  - `Interspazio righe` (88% - 125%, con tetto dinamico in base al font)
+  - `Interspazio righe` (88% - 150%, con tetto dinamico in base al font)
 - Pulsante `Reset Contenuto`
 - Pulsante `Translate Titoli` (modale locale IT/EN)
 - Azione `Stampa`
@@ -40,10 +40,13 @@
 - `contentControls` persistiti in localStorage
 - `sectionTitleTranslations` persistite in localStorage
 - Footer copy modellato in `AppSettings`
+- Chiave settings corrente: `menu-print-app-settings-v3`
+- Migrazione legacy gestita da `v2`/`v1` con riallineamento automatico `contentControls` ai default canonici
+- Marker baseline controlli contenuto: `contentControlsBaselineVersion = 2`
 
 ## Separazione contenuto/footer
 
-I controlli sidebar agiscono solo su `.a4-sheet__body` tramite CSS variables:
+I controlli sidebar agiscono sul wrapper `.a4-sheet__content` tramite CSS variables:
 - `--menu-content-scale`
 - `--menu-content-offset-y`
 - `--menu-content-font-scale`
@@ -53,6 +56,7 @@ Il footer resta escluso dalle trasformazioni per mantenere stabilita stampa.
 La distanza `titolo categoria -> primo piatto` resta canonica e non viene alterata dal controllo `Interspazio righe`.
 `Dimensione font` e `Interspazio righe` sono ora accoppiati da un vincolo anti-overlap per prevenire collisioni tra categorie ai valori estremi.
 Lo `Zoom Menù` agisce sul wrapper interno del contenuto con compensazione di larghezza, quindi i margini laterali del foglio restano coerenti.
+Il guardrail tipografico usa soglia dinamica aggiornata (`MAX_CATEGORY_LAYOUT_PRESSURE = 1.5`) e puo limitare il massimo effettivo dell'interspazio in base al font.
 
 ## Traduzione titoli categoria
 
