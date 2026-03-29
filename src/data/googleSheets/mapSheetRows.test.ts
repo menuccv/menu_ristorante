@@ -22,6 +22,24 @@ describe('mapSheetRows', () => {
     })
   })
 
+  it('riconosce la colonna titolo IT con header speciale del foglio reale', () => {
+    const rows = [
+      ['CATEGORIA', '-*', 'Titolo EN', 'PREZZO', 'ALLERGENI'],
+      ['Primi', 'Tagliatelle al ragù.', 'Tagliatelle with meat sauce.', '18', '1,5,6,10'],
+    ]
+
+    const items = mapSheetRows(rows)
+
+    expect(items).toHaveLength(1)
+    expect(items[0]).toMatchObject({
+      category: 'Primi',
+      titleIt: 'Tagliatelle al ragù.',
+      titleEn: 'Tagliatelle with meat sauce.',
+      price: '18',
+      allergens: '1,5,6,10',
+    })
+  })
+
   it('salta righe senza categoria o titolo', () => {
     const rows = [
       ['category', 'title it', 'title en', 'price', 'allergens'],

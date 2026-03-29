@@ -5,6 +5,10 @@ describe('normalizeHeader', () => {
   it('normalizza maiuscole, trattini, underscore e spazi', () => {
     expect(normalizeHeader('  Title_EN-Menu  ')).toBe('title en menu')
   })
+
+  it('elimina spazi residui dopo normalizzazione', () => {
+    expect(normalizeHeader('-*')).toBe('*')
+  })
 })
 
 describe('parseCsv', () => {

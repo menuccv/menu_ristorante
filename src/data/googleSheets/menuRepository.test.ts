@@ -45,6 +45,9 @@ describe('fetchMenuFromSheet', () => {
     fetchMock.mockResolvedValue({
       ok: true,
       status: 200,
+      headers: {
+        get: () => 'text/csv; charset=utf-8',
+      },
       text: async () =>
         `category,title it,title en,price,allergens
 Primi,Risotto,Risotto,16,7`,
@@ -100,6 +103,32 @@ Primi,Risotto,Risotto,16,7`,
 
     await expect(fetchMenuFromSheet()).rejects.toThrow(
       'Errore foglio non raggiungibile. Verifica URL pubblico e connessione.',
+    )
+  })
+
+  it('fallisce se il payload non e CSV (es. HTML di redirect/login)', async () => {
+    vi.doMock('../../config/googleSheet', async (importOriginal) => {
+      const actual = await importOriginal<typeof import('../../config/googleSheet')>()
+      return {
+        ...actual,
+        GOOGLE_SHEET_CSV_URL: 'https://example.com/menu.csv',
+        IS_GOOGLE_SHEET_CONFIGURED: true,
+      }
+    })
+
+    fetchMock.mockResolvedValue({
+      ok: true,
+      status: 200,
+      headers: {
+        get: () => 'text/html; charset=utf-8',
+      },
+      text: async () => '<!doctype html><html><body>Login</body></html>',
+    })
+
+    const { fetchMenuFromSheet } = await import('./menuRepository')
+
+    await expect(fetchMenuFromSheet()).rejects.toThrow(
+      'Risposta foglio non valida: atteso CSV, ricevuto text/html; charset=utf-8.',
     )
   })
 })

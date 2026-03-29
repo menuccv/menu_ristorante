@@ -6,6 +6,19 @@ import { type MenuDataset } from '../../domain/menu'
 import { mapSheetRows } from './mapSheetRows'
 import { parseCsv } from './csvParser'
 
+function isCsvContentType(contentType: string): boolean {
+  const normalized = contentType.toLowerCase()
+  return (
+    normalized.includes('text/csv') ||
+    normalized.includes('application/csv') ||
+    normalized.includes('application/vnd.ms-excel')
+  )
+}
+
+function looksLikeHtmlDocument(content: string): boolean {
+  return /^\s*<(?:!doctype\s+html|html)\b/i.test(content)
+}
+
 export async function fetchMenuFromSheet(signal?: AbortSignal): Promise<MenuDataset> {
   if (!IS_GOOGLE_SHEET_CONFIGURED) {
     throw new Error(
@@ -34,6 +47,14 @@ export async function fetchMenuFromSheet(signal?: AbortSignal): Promise<MenuData
   }
 
   const csvContent = await response.text()
+  const contentType = response.headers.get('content-type') ?? ''
+
+  if (looksLikeHtmlDocument(csvContent) || (!isCsvContentType(contentType) && contentType)) {
+    throw new Error(
+      `Risposta foglio non valida: atteso CSV, ricevuto ${contentType || 'contenuto non CSV'}.`,
+    )
+  }
+
   const rows = parseCsv(csvContent)
   let items
 

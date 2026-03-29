@@ -13,7 +13,14 @@ export const IS_GOOGLE_SHEET_CONFIGURED = GOOGLE_SHEET_CSV_URL.length > 0
 
 export const SHEET_FIELD_ALIASES: Record<SheetFieldKey, string[]> = {
   category: ['category', 'categoria', 'categoria menu', 'cat'],
-  titleIt: ['title it', 'titolo it', 'nome it', 'titolo italiano'],
+  titleIt: [
+    'title it',
+    'titolo it',
+    'nome it',
+    'titolo italiano',
+    '-*',
+    '*',
+  ],
   titleEn: ['title en', 'titolo en', 'name en', 'titolo inglese'],
   price: ['price', 'prezzo', 'prezzo euro', 'prezzo €'],
   allergens: ['allergens', 'allergeni', 'allergeni note'],

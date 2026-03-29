@@ -6,6 +6,7 @@ export function normalizeHeader(value: string): string {
     .replaceAll('_', ' ')
     .replaceAll('-', ' ')
     .replace(/\s+/g, ' ')
+    .trim()
 }
 
 export function parseCsv(text: string): string[][] {

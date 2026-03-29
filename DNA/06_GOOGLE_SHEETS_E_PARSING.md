@@ -15,6 +15,8 @@
 - `PREZZO`
 - `ALLERGENI`
 
+Alias runtime supportati includono anche header non standard del foglio reale (es. `-*` come equivalente di `Titolo IT`).
+
 ## Flusso dati
 
 1. `menuRepository.ts` esegue fetch read-only del CSV.
@@ -26,4 +28,5 @@
 
 - URL non configurato.
 - Foglio non raggiungibile (rete/HTTP).
+- Payload non valido (HTML/login/redirect non CSV).
 - Errore mapping colonne obbligatorie.

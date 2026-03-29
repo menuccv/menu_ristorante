@@ -14,6 +14,9 @@ Stato operativo avanzato e stabile su base frontend-only, con flusso completo da
 - Nessun pulsante reload manuale: sync foglio automatica.
 - Integrazione Google Sheet read-only via CSV.
 - Parsing e mapping tipizzato dei dati menu.
+- Hardening ingestione CSV:
+  - supporto header reale `-*` come alias di `Titolo IT`
+  - validazione payload fetch per rifiutare risposte HTML/non CSV
 - Traduzione locale titoli sezione (modale `Translate Titoli` + persistenza localStorage).
 - Controlli contenuto con persistenza locale (zoom, offset, font, interspazio).
 - Persistenza settings versionata in localStorage (`menu-print-app-settings-v3`) con baseline marker controlli contenuto (`contentControlsBaselineVersion = 2`).

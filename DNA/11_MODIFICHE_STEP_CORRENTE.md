@@ -777,3 +777,17 @@ Data aggiornamento: 2026-03-29
 4. Test aggiornati:
    - `src/app/components/SidebarControls.test.tsx` (callback pulsante `Esporta PDF`)
    - `src/app/App.test.tsx` (invocazione print anche da `Esporta PDF`).
+
+## Aggiornamento successivo - Fix runtime ingestione Google Sheet (zero righe in deploy)
+
+Data aggiornamento: 2026-03-29
+
+1. Individuata incompatibilita header reale del CSV: colonna titolo IT esposta come `-*` invece di `Titolo IT`.
+2. Estesi alias mapping in `src/config/googleSheet.ts` per includere `-*`/`*` come equivalenti di `titleIt`.
+3. Rafforzata normalizzazione header in `csvParser.ts` con `trim()` finale per evitare mismatch dovuti a spazi residui.
+4. Rafforzato `menuRepository.ts` con validazione payload: errore esplicito se la risposta fetch non e CSV (es. HTML/redirect/login).
+5. Aggiunti test di regressione su:
+   - header speciale `-*` (`mapSheetRows.test.ts`)
+   - validazione payload non CSV (`menuRepository.test.ts`)
+   - normalizzazione header (`csvParser.test.ts`).
+6. Ripristinata compatibilita locale dei gate `check/build` rimuovendo l'opzione TypeScript non supportata `erasableSyntaxOnly` dai `tsconfig` del progetto.

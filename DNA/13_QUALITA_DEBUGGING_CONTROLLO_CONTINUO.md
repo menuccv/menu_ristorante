@@ -152,3 +152,7 @@ Esito finale audit:
 1. Stabilita: nessuna regressione funzionale rilevata.
 2. Qualita: `npm run quality:full` OK.
 3. Modularity/Maintainability: confermate (nessun file codice `src` oltre 350 righe).
+
+## Aggiornamento compatibilita toolchain (2026-03-29)
+
+- Rimosso `erasableSyntaxOnly` da `tsconfig.app.json` e `tsconfig.node.json` per mantenere eseguibili `npm run check`, `npm run quality` e `npm run build` in ambienti con TypeScript locale non allineato.
