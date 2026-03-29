@@ -22,13 +22,6 @@ const contentControls = {
   lineHeightPercent: 100,
 }
 
-const sectionTitleTranslations = {
-  Primi: {
-    titleIt: 'Primi',
-    titleEn: 'First Courses',
-  },
-}
-
 describe('PreviewPane', () => {
   it('renderizza template interno per vista IT', () => {
     render(
@@ -36,7 +29,6 @@ describe('PreviewPane', () => {
         view="IT"
         items={items}
         contentControls={contentControls}
-        sectionTitleTranslations={sectionTitleTranslations}
       />,
     )
 
@@ -50,7 +42,6 @@ describe('PreviewPane', () => {
         view="EXTERNAL"
         items={items}
         contentControls={contentControls}
-        sectionTitleTranslations={sectionTitleTranslations}
       />,
     )
 

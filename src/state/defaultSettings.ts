@@ -10,5 +10,4 @@ export const DEFAULT_APP_SETTINGS: AppSettings = {
     breadServiceLineEn: 'Bread and service included where indicated by the menu.',
   },
   contentControls: DEFAULT_CONTENT_CONTROLS,
-  sectionTitleTranslations: {},
 }

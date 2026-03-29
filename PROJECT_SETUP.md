@@ -53,7 +53,7 @@
 - Sheet sync is automatic (mount + interval + focus + visibility) with anti-overlap guard for concurrent fetch triggers.
 - Content controls are applied to `.a4-sheet__content` (not footer) through CSS custom properties.
 - Settings persistence uses versioned key `menu-print-app-settings-v3` with baseline marker for canonical content controls defaults.
-- Sidebar includes `Stampa` and `Esporta PDF`; PDF export uses dedicated A4 preview capture and PDF generation (without browser print headers/footers).
+- Sidebar includes `Esporta PDF` as the only output action; PDF export uses dedicated A4 preview capture and PDF generation (without browser print headers/footers).
 
 ## Git Workflow (Manuale)
 
@@ -63,6 +63,7 @@
   - `push.default = simple`
   - `pull.ff = only`
 - Nessuna automazione di commit/push: operazioni eseguite solo su richiesta esplicita.
+- Convenzione operativa persistente (multi-PC): una richiesta esplicita utente tipo `commit push` vale come autorizzazione unica end-to-end per eseguire automaticamente `quality/build` (se richiesti), `git add`, `git commit` e `git push origin main`, fermandosi solo su blocchi reali di permessi/auth/conflitti.
 
 Passi standard:
 

@@ -832,3 +832,53 @@ Data aggiornamento: 2026-03-29
 1. In `src/styles/print.css` aumentato leggermente il contrasto degli allergeni a sinistra delle righe piatti (`.menu-item-row__allergens`).
 2. Aumentato leggermente il contrasto dei nomi allergeni nel footer (`.menu-footer__legend-item`) mantenendo invariati i numeri in grassetto.
 3. Intervento limitato al solo media print, senza impatto sulla preview app.
+
+## Aggiornamento successivo - Prezzi avvicinati alle righe piatti
+
+Data aggiornamento: 2026-03-29
+
+1. Corretto approccio layout: rimossa traslazione della sola colonna prezzi.
+2. IT/EN: centrato il blocco riga completo riducendo la larghezza utile lista (`.menu-list`) di `30mm` e mantenendo `margin-inline: auto`.
+3. EXTERNAL: applicata la stessa logica alla lista (`.external-menu__list`) per coerenza visiva.
+4. Risultato: prezzi piu vicini ai piatti con centratura reale del blocco `allergeni + titolo + prezzo` sul foglio.
+
+## Aggiornamento successivo - Rimozione funzione/pulsante Stampa
+
+Data aggiornamento: 2026-03-29
+
+1. Rimossa dalla sidebar l'azione `Stampa`.
+2. Eliminata la callback `onPrint` dai componenti `App` e `SidebarControls`.
+3. Mantenuta `Esporta PDF` come unica azione di output.
+4. Aggiornati test UI (`App.test.tsx`, `SidebarControls.test.tsx`) e documentazione di stato.
+
+## Aggiornamento successivo - Rimozione completa Translate Titoli
+
+Data aggiornamento: 2026-03-29
+
+1. Rimossi pulsante e modale `Translate Titoli` dalla sidebar.
+2. Eliminati stato, callback e persistenza locale `sectionTitleTranslations` da hook/settings/types.
+3. Rimosso file `src/app/components/SectionTitlesModal.tsx`.
+4. Rimosso file `src/state/sectionTitleTranslations.ts`.
+5. Risoluzione titoli sezione semplificata:
+   - `IT`: `Categoria`
+   - `EN`: `Categoria EN` con fallback su `Categoria`
+6. Aggiornati test e documentazione corrente in coerenza con la nuova logica.
+
+## Aggiornamento successivo - Convenzione persistente commit/push
+
+Data aggiornamento: 2026-03-29
+
+1. Formalizzata in `AGENTS.md` e `PROJECT_SETUP.md` la regola operativa: richiesta utente esplicita `commit push` (o equivalente) vale come autorizzazione unica end-to-end per validazioni, commit e push su `main`.
+2. La procedura si interrompe solo su blocker reali (permessi/auth, conflitti hard, check obbligatori falliti).
+
+## Aggiornamento successivo - Audit enterprise + backup coerente
+
+Data aggiornamento: 2026-03-29
+
+1. Eseguito controllo tecnico completo post-merge con quality gate verdi:
+   - `npm run quality` OK
+   - `npm run build` OK
+2. Verificata assenza di riferimenti runtime residui a `Translate Titoli` / `sectionTitleTranslations` / `Stampa` nel codice sorgente.
+3. Aggiornata documentazione DNA allo stato reale corrente, rimuovendo riferimenti residui non validi nel modello operativo attuale.
+4. Creato nuovo backup coerente con policy permanente senza sovrascrittura:
+   - `Backup/Backup_29 Marzo_23.18.tar.gz`

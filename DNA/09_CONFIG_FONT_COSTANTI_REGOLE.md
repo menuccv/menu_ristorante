@@ -45,7 +45,6 @@ Toni chiari caldi (bianco, crema, marrone soft) definiti in `src/styles/index.cs
   - range `lineHeightPercent`: `88` - `150` (con massimo effettivo dipendente da `fontScalePercent`)
 - Metrica default interspazio righe piatti IT/EN in `src/styles/menu-template.css`:
   - `--category-row-gap: calc(2.1mm * var(--category-layout-scale))`
-- `sectionTitleTranslations` in `AppSettings` + normalizzazione in `src/state/sectionTitleTranslations.ts`
 - `manifest.webmanifest` in `public/` con `name`, `short_name`, `start_url`, `display`, `theme_color`, `background_color`, `icons`
 - Meta installazione in `index.html`:
   - `theme-color`

@@ -2,7 +2,6 @@ import { type AppSettings } from '../domain/menu'
 import { DEFAULT_CONTENT_CONTROLS } from './contentControls'
 import { normalizeContentControls } from './contentControls'
 import { DEFAULT_APP_SETTINGS } from './defaultSettings'
-import { normalizeSectionTitleTranslations } from './sectionTitleTranslations'
 
 const STORAGE_KEY = 'menu-print-app-settings-v3'
 const CONTENT_CONTROLS_BASELINE_VERSION = 2
@@ -31,9 +30,6 @@ function mergeSettings(candidate: Partial<AppSettings> | null): AppSettings {
         DEFAULT_APP_SETTINGS.footer.breadServiceLineEn,
     },
     contentControls: normalizeContentControls(candidate?.contentControls),
-    sectionTitleTranslations: normalizeSectionTitleTranslations(
-      candidate?.sectionTitleTranslations,
-    ),
   }
 }
 

@@ -1,5 +1,5 @@
 import { type CSSProperties } from 'react'
-import { type MenuItem, type SectionTitleTranslations } from '../../domain/menu'
+import { type MenuItem } from '../../domain/menu'
 import { A4Sheet } from '../components/A4Sheet'
 import { groupMenuItems } from '../utils/groupMenuItems'
 import { resolveSectionTitle } from '../utils/resolveSectionTitle'
@@ -7,7 +7,6 @@ import { resolveSectionTitle } from '../utils/resolveSectionTitle'
 interface ExternalMenuTemplateProps {
   items: MenuItem[]
   contentStyle?: CSSProperties
-  sectionTitleTranslations: SectionTitleTranslations
 }
 
 function getItalianLabel(item: MenuItem): string {
@@ -21,7 +20,6 @@ function getEnglishLabel(item: MenuItem): string {
 export function ExternalMenuTemplate({
   items,
   contentStyle,
-  sectionTitleTranslations,
 }: ExternalMenuTemplateProps) {
   const groups = groupMenuItems(items)
 
@@ -42,7 +40,7 @@ export function ExternalMenuTemplate({
           {groups.map((group) => (
             <section key={group.category} className="external-menu__section">
               <h3 className="external-menu__section-title">
-                {resolveSectionTitle(group.category, 'IT', sectionTitleTranslations)}
+                {resolveSectionTitle(group.category, 'IT')}
               </h3>
               <ul className="external-menu__list">
                 {group.items.map((item) => (

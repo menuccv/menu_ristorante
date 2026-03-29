@@ -10,8 +10,6 @@
   - `Dimensione font` (88% - 130%)
   - `Interspazio righe` (88% - 150%, con tetto dinamico in base al font)
 - Pulsante `Reset Contenuto`
-- Pulsante `Translate Titoli` (modale locale IT/EN)
-- Azione `Stampa`
 - Azione `Esporta PDF` (rosso, testo bianco) con export PDF diretto dalla preview A4
 - Pulsante link `Google Sheet` (verde, nuova tab)
 
@@ -24,7 +22,7 @@
 - Pulsanti `- / +` invariati (`2.4rem`)
 - Box valori centrali ridotti con larghezza canonica (`4.05rem`)
 - Nessun titolo box visivo (`Vista`, `Contenuto`, `Azioni` rimossi)
-- Ordine azioni consolidato: `Translate Titoli` -> `Stampa` -> `Esporta PDF` -> `Google Sheet`
+- Ordine azioni consolidato: `Esporta PDF` -> `Google Sheet`
 
 ## Sincronizzazione dati
 
@@ -40,7 +38,6 @@
 
 - `selectedView` persistito in localStorage
 - `contentControls` persistiti in localStorage
-- `sectionTitleTranslations` persistite in localStorage
 - Footer copy modellato in `AppSettings`
 - Chiave settings corrente: `menu-print-app-settings-v3`
 - Migrazione legacy gestita da `v2`/`v1` con riallineamento automatico `contentControls` ai default canonici
@@ -60,12 +57,9 @@ La distanza `titolo categoria -> primo piatto` resta canonica e non viene altera
 Lo `Zoom Menù` agisce sul wrapper interno del contenuto con compensazione di larghezza, quindi i margini laterali del foglio restano coerenti.
 Il guardrail tipografico usa soglia dinamica aggiornata (`MAX_CATEGORY_LAYOUT_PRESSURE = 1.5`) e puo limitare il massimo effettivo dell'interspazio in base al font.
 
-## Traduzione titoli categoria
+## Titoli sezione categoria
 
-- Fonte: categorie reali rilevate dal menu caricato.
-- Gestione: modale `Translate Titoli` con campi `Titolo IT` e `Titolo EN` per categoria.
-- Persistenza: solo locale app (settings), nessuna scrittura su Google Sheet.
-- In vista `EN`, se il foglio fornisce `Categoria EN`, questo valore ha priorita sui valori locali della modale.
-- Fallback:
-  - vista `IT`: `Titolo IT` se presente, altrimenti categoria originale
-  - vista `EN`: `Categoria EN` (foglio) -> `Titolo EN` (locale) -> `Titolo IT` (locale) -> categoria originale
+- Fonte canonicale:
+  - vista `IT`: `Categoria` dal foglio
+  - vista `EN`: `Categoria EN` dal foglio, fallback su `Categoria`
+- Nessuna gestione locale/manuale dei titoli sezione in sidebar.

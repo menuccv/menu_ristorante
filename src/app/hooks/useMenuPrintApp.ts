@@ -6,14 +6,12 @@ import {
   type LoadStatus,
   type MenuDataset,
   type MenuView,
-  type SectionTitleTranslations,
 } from '../../domain/menu'
 import {
   type ContentControlId,
   DEFAULT_CONTENT_CONTROLS,
   stepContentControlValue,
 } from '../../state/contentControls'
-import { normalizeSectionTitleTranslations } from '../../state/sectionTitleTranslations'
 import { loadAppSettings, saveAppSettings } from '../../state/settingsStore'
 
 interface UseMenuPrintAppResult {
@@ -23,14 +21,12 @@ interface UseMenuPrintAppResult {
   selectedView: MenuView
   footerCopy: FooterCopy
   contentControls: ContentControls
-  sectionTitleTranslations: SectionTitleTranslations
   setSelectedView: (view: MenuView) => void
   adjustContentControl: (
     id: ContentControlId,
     direction: 'decrease' | 'increase',
   ) => void
   resetContentControls: () => void
-  saveSectionTitleTranslations: (translations: SectionTitleTranslations) => void
 }
 
 export function useMenuPrintApp(): UseMenuPrintAppResult {
@@ -131,16 +127,6 @@ export function useMenuPrintApp(): UseMenuPrintAppResult {
     }))
   }, [])
 
-  const saveSectionTitleTranslations = useCallback(
-    (translations: SectionTitleTranslations) => {
-      setSettings((current) => ({
-        ...current,
-        sectionTitleTranslations: normalizeSectionTitleTranslations(translations),
-      }))
-    },
-    [],
-  )
-
   return useMemo(
     () => ({
       status,
@@ -149,22 +135,18 @@ export function useMenuPrintApp(): UseMenuPrintAppResult {
       selectedView: settings.selectedView,
       footerCopy: settings.footer,
       contentControls: settings.contentControls,
-      sectionTitleTranslations: settings.sectionTitleTranslations,
       setSelectedView,
       adjustContentControl,
       resetContentControls,
-      saveSectionTitleTranslations,
     }),
     [
       adjustContentControl,
       resetContentControls,
-      saveSectionTitleTranslations,
       errorMessage,
       menuData,
       setSelectedView,
       settings.contentControls,
       settings.footer,
-      settings.sectionTitleTranslations,
       settings.selectedView,
       status,
     ],

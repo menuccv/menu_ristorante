@@ -52,27 +52,19 @@ describe('App', () => {
         fontScalePercent: 100,
         lineHeightPercent: 100,
       },
-      sectionTitleTranslations: {},
       setSelectedView: vi.fn(),
       adjustContentControl: vi.fn(),
       resetContentControls: vi.fn(),
-      saveSectionTitleTranslations: vi.fn(),
     })
   })
 
   it('renderizza shell e risponde alle azioni principali', () => {
-    const printSpy = vi.spyOn(window, 'print').mockImplementation(() => undefined)
-
     render(<App />)
 
     expect(screen.getByText('Primi')).toBeInTheDocument()
     expect(screen.getByText('Risotto')).toBeInTheDocument()
 
-    fireEvent.click(screen.getByRole('button', { name: 'Stampa' }))
     fireEvent.click(screen.getByRole('button', { name: 'Esporta PDF' }))
-    expect(printSpy).toHaveBeenCalledTimes(1)
     expect(mockedExportMenuPdfFromPreview).toHaveBeenCalledTimes(1)
-
-    printSpy.mockRestore()
   })
 })

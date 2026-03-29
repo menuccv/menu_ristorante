@@ -16,3 +16,8 @@ These rules apply to the entire repository.
 - No duplicate logic, dead code, fallback shadow implementations, or speculative features.
 - Typography is limited to `Playfair Display` and `DM Sans`.
 - Every structural, functional, or architectural change must update the impacted `DNA/*.md` files in the same step.
+
+## Commit/Push Authorization Rule
+
+- If the user writes an explicit command like `commit push`, `esegui commit push`, or equivalent wording, it is a single end-to-end authorization to run all required steps automatically: validation checks, commit creation, and push to `main`.
+- Only stop for real blockers (missing GitHub permissions/auth, hard conflicts, or failing mandatory checks).

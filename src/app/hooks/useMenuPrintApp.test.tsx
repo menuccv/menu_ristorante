@@ -35,7 +35,6 @@ describe('useMenuPrintApp', () => {
         fontScalePercent: 100,
         lineHeightPercent: 100,
       },
-      sectionTitleTranslations: {},
     })
   })
 
@@ -84,17 +83,6 @@ describe('useMenuPrintApp', () => {
     })
 
     expect(result.current.contentControls.zoomPercent).toBe(100)
-
-    act(() => {
-      result.current.saveSectionTitleTranslations({
-        Primi: {
-          titleIt: 'Primi',
-          titleEn: 'First Courses',
-        },
-      })
-    })
-
-    expect(result.current.sectionTitleTranslations.Primi?.titleEn).toBe('First Courses')
 
     act(() => {
       window.dispatchEvent(new Event('focus'))

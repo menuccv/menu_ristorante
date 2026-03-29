@@ -1,16 +1,10 @@
-import { useState } from 'react'
 import { GOOGLE_SHEET_EDIT_URL } from '../../config/googleSheet'
-import {
-  type ContentControls,
-  type MenuView,
-  type SectionTitleTranslations,
-} from '../../domain/menu'
+import { type ContentControls, type MenuView } from '../../domain/menu'
 import {
   CONTENT_CONTROL_CONFIGS,
   type ContentControlId,
   isAtBoundary,
 } from '../../state/contentControls'
-import { SectionTitlesModal } from './SectionTitlesModal'
 import { SidebarStepperControl } from './SidebarStepperControl'
 
 interface SidebarControlsProps {
@@ -22,10 +16,6 @@ interface SidebarControlsProps {
     direction: 'decrease' | 'increase',
   ) => void
   onResetContentControls: () => void
-  categories: string[]
-  sectionTitleTranslations: SectionTitleTranslations
-  onSaveSectionTitleTranslations: (translations: SectionTitleTranslations) => void
-  onPrint: () => void
   onExportPdf: () => void
 }
 
@@ -41,45 +31,8 @@ export function SidebarControls({
   onChangeView,
   onAdjustContentControl,
   onResetContentControls,
-  categories,
-  sectionTitleTranslations,
-  onSaveSectionTitleTranslations,
-  onPrint,
   onExportPdf,
 }: SidebarControlsProps) {
-  const [isTitlesModalOpen, setIsTitlesModalOpen] = useState(false)
-  const [draftTranslations, setDraftTranslations] = useState<SectionTitleTranslations>({})
-
-  const openTitlesModal = () => {
-    const initialDraft = Object.fromEntries(
-      categories.map((category) => [
-        category,
-        {
-          titleIt: sectionTitleTranslations[category]?.titleIt || category,
-          titleEn: sectionTitleTranslations[category]?.titleEn || '',
-        },
-      ]),
-    )
-
-    setDraftTranslations(initialDraft)
-    setIsTitlesModalOpen(true)
-  }
-
-  const updateDraftField = (
-    category: string,
-    field: 'titleIt' | 'titleEn',
-    value: string,
-  ) => {
-    setDraftTranslations((current) => ({
-      ...current,
-      [category]: {
-        titleIt: current[category]?.titleIt ?? category,
-        titleEn: current[category]?.titleEn ?? '',
-        [field]: value,
-      },
-    }))
-  }
-
   const formatValue = (id: ContentControlId): string => {
     const value = contentControls[id]
     if (id === 'offsetYmm') {
@@ -143,20 +96,6 @@ export function SidebarControls({
       <section className="control-block" aria-label="Azioni">
         <button
           type="button"
-          className="action-btn"
-          onClick={openTitlesModal}
-        >
-          Translate Titoli
-        </button>
-        <button
-          type="button"
-          className="action-btn action-btn--primary"
-          onClick={onPrint}
-        >
-          Stampa
-        </button>
-        <button
-          type="button"
           className="action-btn action-btn--pdf"
           onClick={onExportPdf}
         >
@@ -171,20 +110,6 @@ export function SidebarControls({
           Google Sheet
         </a>
       </section>
-
-      <SectionTitlesModal
-        isOpen={isTitlesModalOpen}
-        categories={categories}
-        draftTranslations={draftTranslations}
-        onChangeField={updateDraftField}
-        onClose={() => {
-          setIsTitlesModalOpen(false)
-        }}
-        onSave={() => {
-          onSaveSectionTitleTranslations(draftTranslations)
-          setIsTitlesModalOpen(false)
-        }}
-      />
     </aside>
   )
 }

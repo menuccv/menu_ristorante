@@ -65,19 +65,12 @@ describe('settingsStore', () => {
         ...DEFAULT_APP_SETTINGS.contentControls,
         lineHeightPercent: 118,
       },
-      sectionTitleTranslations: {
-        antipasti: {
-          titleIt: 'Antipasti',
-          titleEn: 'Starter',
-        },
-      },
     }
 
     window.localStorage.setItem('menu-print-app-settings-v2', JSON.stringify(legacySettings))
 
     const migrated = loadAppSettings()
     expect(migrated.selectedView).toBe('EN')
-    expect(migrated.sectionTitleTranslations).toEqual(legacySettings.sectionTitleTranslations)
     expect(migrated.contentControls).toEqual(DEFAULT_APP_SETTINGS.contentControls)
   })
 

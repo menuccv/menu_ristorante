@@ -1,5 +1,5 @@
 import { type CSSProperties } from 'react'
-import { type MenuItem, type SectionTitleTranslations } from '../../domain/menu'
+import { type MenuItem } from '../../domain/menu'
 import { A4Sheet } from '../components/A4Sheet'
 import { formatAllergensInline } from '../utils/formatAllergens'
 import { groupMenuItems } from '../utils/groupMenuItems'
@@ -9,7 +9,6 @@ interface InternalMenuTemplateProps {
   items: MenuItem[]
   language: 'IT' | 'EN'
   contentStyle?: CSSProperties
-  sectionTitleTranslations: SectionTitleTranslations
 }
 
 function getItemLabel(item: MenuItem, language: 'IT' | 'EN'): string {
@@ -58,7 +57,6 @@ export function InternalMenuTemplate({
   items,
   language,
   contentStyle,
-  sectionTitleTranslations,
 }: InternalMenuTemplateProps) {
   const groups = groupMenuItems(items)
   const isItalian = language === 'IT'
@@ -99,7 +97,6 @@ export function InternalMenuTemplate({
                 {resolveSectionTitle(
                   group.category,
                   language,
-                  sectionTitleTranslations,
                   group.categoryEn,
                 )}
               </span>

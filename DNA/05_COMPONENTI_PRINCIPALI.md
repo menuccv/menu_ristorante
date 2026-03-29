@@ -2,25 +2,19 @@
 
 ## `src/app/App.tsx`
 
-Composizione shell e collegamento eventi principali (`print`, export PDF dedicato da preview A4, cambio vista, traduzioni titoli sezione).
+Composizione shell e collegamento eventi principali (export PDF dedicato da preview A4, cambio vista).
 
 ## `src/app/components/SidebarControls.tsx`
 
 - Switch vista (`MenuView`): IT/EN/EXTERNAL con etichette UI `ITALIANO`/`INGLESE`/`ESTERNO`.
-- Azione: stampa vista corrente (`Stampa`).
-- Azione: export PDF (`Esporta PDF`) usando lo stesso flusso nativo della stampa browser.
-- Azione: apertura modale `Translate Titoli`.
+- Azione: export PDF (`Esporta PDF`) da preview A4.
 - Controlli contenuto (solo area contenuto A4): zoom, offset verticale, font globale, interspazio globale.
 - Reset rapido dei controlli contenuto.
 
 ## `src/app/hooks/useMenuPrintApp.ts`
 
-Gestione stato app + sincronizzazione automatica Google Sheet (caricamento iniziale, interval, focus, visibilitychange) + persistenza traduzioni titoli sezione.
+Gestione stato app + sincronizzazione automatica Google Sheet (caricamento iniziale, interval, focus, visibilitychange).
 Include hardening anti-overlap per evitare fetch concorrenti su trigger ravvicinati.
-
-## `src/app/components/SectionTitlesModal.tsx`
-
-Modale per gestione locale/manuale `Titolo IT` e `Titolo EN` per categoria.
 
 ## `src/app/components/SidebarStepperControl.tsx`
 
@@ -36,5 +30,5 @@ Contenitore comune pagina A4 con header, body e footer opzionale; il wrapper `.a
 
 ## Template
 
-- `InternalMenuTemplate.tsx`: vista IT/EN interna con risoluzione titoli sezione tradotti; in EN priorita a `Categoria EN` dal foglio quando presente.
+- `InternalMenuTemplate.tsx`: vista IT/EN interna con risoluzione titoli sezione dal foglio; in EN priorita a `Categoria EN` quando presente.
 - `ExternalMenuTemplate.tsx`: vista esterna dedicata (solo logo locale `logo_ccv.png` centrato, categorie in italiano, piatto IT + EN, prezzo a destra, senza allergeni riga e senza footer tecnico).

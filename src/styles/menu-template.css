@@ -140,7 +140,8 @@
 .a4-sheet--internal .menu-list {
   display: grid;
   gap: var(--category-row-gap);
-  width: 100%;
+  width: calc(100% - 30mm);
+  margin-inline: auto;
 }
 
 .a4-sheet--internal .menu-section__content {

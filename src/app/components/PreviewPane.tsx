@@ -3,7 +3,6 @@ import {
   type ContentControls,
   type MenuItem,
   type MenuView,
-  type SectionTitleTranslations,
 } from '../../domain/menu'
 import { ExternalMenuTemplate } from '../../print/templates/ExternalMenuTemplate'
 import { InternalMenuTemplate } from '../../print/templates/InternalMenuTemplate'
@@ -12,7 +11,6 @@ interface PreviewPaneProps {
   view: MenuView
   items: MenuItem[]
   contentControls: ContentControls
-  sectionTitleTranslations: SectionTitleTranslations
 }
 
 const MM_TO_PX = 96 / 25.4
@@ -23,7 +21,6 @@ export function PreviewPane({
   view,
   items,
   contentControls,
-  sectionTitleTranslations,
 }: PreviewPaneProps) {
   const canvasRef = useRef<HTMLDivElement>(null)
   const [previewScale, setPreviewScale] = useState(1)
@@ -93,14 +90,12 @@ export function PreviewPane({
               <ExternalMenuTemplate
                 items={items}
                 contentStyle={contentStyle}
-                sectionTitleTranslations={sectionTitleTranslations}
               />
             ) : (
               <InternalMenuTemplate
                 items={items}
                 language={view === 'IT' ? 'IT' : 'EN'}
                 contentStyle={contentStyle}
-                sectionTitleTranslations={sectionTitleTranslations}
               />
             )}
           </div>
