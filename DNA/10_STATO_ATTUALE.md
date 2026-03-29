@@ -10,7 +10,7 @@ Stato operativo avanzato e stabile su base frontend-only, con flusso completo da
 - Tre viste attive (`MenuView`): `IT`, `EN`, `EXTERNAL`.
 - Etichette sidebar: `ITALIANO`, `INGLESE`, `ESTERNO`.
 - Pulsante stampa attivo (`window.print`).
-- Pulsante `Esporta PDF` attivo in sidebar (sopra `Google Sheet`, stile rosso testo bianco), collegato al flusso stampa nativo.
+- Pulsante `Esporta PDF` attivo in sidebar (sopra `Google Sheet`, stile rosso testo bianco), collegato a export PDF diretto da preview A4.
 - Nessun pulsante reload manuale: sync foglio automatica.
 - Integrazione Google Sheet read-only via CSV.
 - Parsing e mapping tipizzato dei dati menu.
@@ -37,6 +37,9 @@ Stato operativo avanzato e stabile su base frontend-only, con flusso completo da
   - guardrail dinamico su `fontScalePercent` x `lineHeightPercent` (soglia `1.5`) per evitare overlap tra categorie
   - variabili di metrica categoria dichiarate sul wrapper `.a4-sheet__content` per coerenza con i controlli sidebar
 - Margini laterali foglio piu ampi e fissi, con coerenza mantenuta anche durante `Zoom Menù`.
+- Tuning stampa leggibilita allergeni:
+  - allergeni riga (colonna sinistra) leggermente piu scuri in print
+  - nomi allergeni nel footer leggermente piu scuri in print (numeri invariati)
 - Setup installazione web app consolidato:
   - `manifest.webmanifest` attivo
   - icone statiche ottimizzate (`192`, `512`, `apple-touch-icon`, `favicon`)

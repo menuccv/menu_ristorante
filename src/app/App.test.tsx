@@ -2,15 +2,22 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { App } from './App'
 import { useMenuPrintApp } from './hooks/useMenuPrintApp'
+import { exportMenuPdfFromPreview } from '../print/utils/exportMenuPdf'
 
 vi.mock('./hooks/useMenuPrintApp', () => ({
   useMenuPrintApp: vi.fn(),
 }))
 
+vi.mock('../print/utils/exportMenuPdf', () => ({
+  exportMenuPdfFromPreview: vi.fn().mockResolvedValue(undefined),
+}))
+
 describe('App', () => {
   const mockedUseMenuPrintApp = vi.mocked(useMenuPrintApp)
+  const mockedExportMenuPdfFromPreview = vi.mocked(exportMenuPdfFromPreview)
 
   beforeEach(() => {
+    vi.clearAllMocks()
     mockedUseMenuPrintApp.mockReturnValue({
       status: 'ready',
       errorMessage: '',
@@ -63,7 +70,8 @@ describe('App', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Stampa' }))
     fireEvent.click(screen.getByRole('button', { name: 'Esporta PDF' }))
-    expect(printSpy).toHaveBeenCalledTimes(2)
+    expect(printSpy).toHaveBeenCalledTimes(1)
+    expect(mockedExportMenuPdfFromPreview).toHaveBeenCalledTimes(1)
 
     printSpy.mockRestore()
   })

@@ -98,6 +98,14 @@
     font-weight: 500;
   }
 
+  .a4-sheet--internal .menu-item-row__allergens {
+    color: #4f4f4f;
+  }
+
+  .menu-footer__legend-item {
+    color: #4f4f4f;
+  }
+
   .menu-footer__service-line {
     font-weight: 400;
   }

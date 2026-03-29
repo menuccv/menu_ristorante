@@ -12,7 +12,7 @@
 - Pulsante `Reset Contenuto`
 - Pulsante `Translate Titoli` (modale locale IT/EN)
 - Azione `Stampa`
-- Azione `Esporta PDF` (rosso, testo bianco)
+- Azione `Esporta PDF` (rosso, testo bianco) con export PDF diretto dalla preview A4
 - Pulsante link `Google Sheet` (verde, nuova tab)
 
 ## Regole layout sidebar consolidate

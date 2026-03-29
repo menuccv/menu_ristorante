@@ -53,7 +53,7 @@
 - Sheet sync is automatic (mount + interval + focus + visibility) with anti-overlap guard for concurrent fetch triggers.
 - Content controls are applied to `.a4-sheet__content` (not footer) through CSS custom properties.
 - Settings persistence uses versioned key `menu-print-app-settings-v3` with baseline marker for canonical content controls defaults.
-- Sidebar includes `Stampa` and `Esporta PDF`; PDF export intentionally uses native print dialog for print-preview parity (`Save as PDF`).
+- Sidebar includes `Stampa` and `Esporta PDF`; PDF export uses dedicated A4 preview capture and PDF generation (without browser print headers/footers).
 
 ## Git Workflow (Manuale)
 

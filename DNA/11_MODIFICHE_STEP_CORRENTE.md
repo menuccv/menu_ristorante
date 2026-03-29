@@ -807,3 +807,28 @@ Data aggiornamento: 2026-03-29
    - mapping `Categoria EN`
    - grouping con `categoryEn`
    - priorita risoluzione titoli sezione EN.
+
+## Aggiornamento successivo - Esporta PDF dedicato senza header/footer browser
+
+Data aggiornamento: 2026-03-29
+
+1. Separata la logica del pulsante `Esporta PDF` dalla stampa nativa.
+2. Introdotta utility `src/print/utils/exportMenuPdf.ts` che cattura la `.a4-sheet` della preview e genera PDF A4 diretto.
+3. Rimossi dall'export PDF i metadati browser tipici (`URL`, data, numerazione pagina) non desiderati nel menu finale.
+4. Aggiornato `App.tsx` per usare export dedicato e mantenere `Stampa` su `window.print`.
+5. Aggiornati test applicativi e documentazione DNA/Setup in coerenza con il nuovo flusso.
+
+Aggiornamento integrativo (stessa data):
+
+6. Export PDF hardenizzato per iPad:
+   - cattura su clone non scalato della pagina A4 (indipendente dalla scala preview),
+   - render forzato su singola pagina A4 nel PDF (`210x297mm`),
+   - preservazione visiva delle linee sottili dei titoli sezione durante l'export.
+
+## Aggiornamento successivo - Tuning contrasto allergeni in stampa
+
+Data aggiornamento: 2026-03-29
+
+1. In `src/styles/print.css` aumentato leggermente il contrasto degli allergeni a sinistra delle righe piatti (`.menu-item-row__allergens`).
+2. Aumentato leggermente il contrasto dei nomi allergeni nel footer (`.menu-footer__legend-item`) mantenendo invariati i numeri in grassetto.
+3. Intervento limitato al solo media print, senza impatto sulla preview app.

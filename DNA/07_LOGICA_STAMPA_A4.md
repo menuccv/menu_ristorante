@@ -39,7 +39,7 @@ Allineare nel tempo:
 
 - anteprima in app
 - print preview browser
-- export PDF da browser (`Esporta PDF` -> dialogo nativo stampa -> `Salva come PDF`)
+- export PDF da preview A4 (`Esporta PDF` -> file PDF diretto)
 - foglio stampato reale
 
-L'export PDF adotta volutamente lo stesso motore di stampa nativo (`window.print`) per massimizzare coerenza di impaginazione e proporzioni con preview e stampa finale.
+L'export PDF usa una pipeline dedicata che cattura la preview A4 (`.a4-sheet`) su clone non scalato e genera un file PDF A4 su singola pagina senza header/footer browser (URL, data, numerazione pagine).

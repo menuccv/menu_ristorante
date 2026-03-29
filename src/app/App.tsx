@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { SidebarControls } from './components/SidebarControls'
 import { PreviewPane } from './components/PreviewPane'
 import { useMenuPrintApp } from './hooks/useMenuPrintApp'
+import { exportMenuPdfFromPreview } from '../print/utils/exportMenuPdf'
 
 export function App() {
   const {
@@ -34,13 +35,25 @@ export function App() {
     window.print()
   }
 
+  const handleExportPdf = async () => {
+    try {
+      await exportMenuPdfFromPreview()
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : 'Impossibile esportare il PDF dalla preview.'
+      console.error(message)
+    }
+  }
+
   return (
     <div className="app-shell">
       <SidebarControls
         selectedView={selectedView}
         onChangeView={setSelectedView}
         onPrint={handleNativePrint}
-        onExportPdf={handleNativePrint}
+        onExportPdf={handleExportPdf}
         contentControls={contentControls}
         onAdjustContentControl={adjustContentControl}
         onResetContentControls={resetContentControls}

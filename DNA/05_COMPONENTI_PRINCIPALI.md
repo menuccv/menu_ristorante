@@ -2,7 +2,7 @@
 
 ## `src/app/App.tsx`
 
-Composizione shell e collegamento eventi principali (`print`, export PDF via print nativo, cambio vista, traduzioni titoli sezione).
+Composizione shell e collegamento eventi principali (`print`, export PDF dedicato da preview A4, cambio vista, traduzioni titoli sezione).
 
 ## `src/app/components/SidebarControls.tsx`
 
