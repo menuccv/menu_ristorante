@@ -61,7 +61,8 @@ describe('App', () => {
     expect(screen.getByText('Risotto')).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: 'Stampa' }))
-    expect(printSpy).toHaveBeenCalledTimes(1)
+    fireEvent.click(screen.getByRole('button', { name: 'Esporta PDF' }))
+    expect(printSpy).toHaveBeenCalledTimes(2)
 
     printSpy.mockRestore()
   })

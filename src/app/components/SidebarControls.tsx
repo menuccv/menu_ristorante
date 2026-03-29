@@ -26,6 +26,7 @@ interface SidebarControlsProps {
   sectionTitleTranslations: SectionTitleTranslations
   onSaveSectionTitleTranslations: (translations: SectionTitleTranslations) => void
   onPrint: () => void
+  onExportPdf: () => void
 }
 
 const VIEW_OPTIONS: ReadonlyArray<{ value: MenuView; label: string }> = [
@@ -44,6 +45,7 @@ export function SidebarControls({
   sectionTitleTranslations,
   onSaveSectionTitleTranslations,
   onPrint,
+  onExportPdf,
 }: SidebarControlsProps) {
   const [isTitlesModalOpen, setIsTitlesModalOpen] = useState(false)
   const [draftTranslations, setDraftTranslations] = useState<SectionTitleTranslations>({})
@@ -152,6 +154,13 @@ export function SidebarControls({
           onClick={onPrint}
         >
           Stampa
+        </button>
+        <button
+          type="button"
+          className="action-btn action-btn--pdf"
+          onClick={onExportPdf}
+        >
+          Esporta PDF
         </button>
         <a
           className="action-btn action-btn--sheet"

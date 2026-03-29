@@ -30,14 +30,17 @@ export function App() {
     return orderedCategories
   }, [menuData])
 
+  const handleNativePrint = () => {
+    window.print()
+  }
+
   return (
     <div className="app-shell">
       <SidebarControls
         selectedView={selectedView}
         onChangeView={setSelectedView}
-        onPrint={() => {
-          window.print()
-        }}
+        onPrint={handleNativePrint}
+        onExportPdf={handleNativePrint}
         contentControls={contentControls}
         onAdjustContentControl={adjustContentControl}
         onResetContentControls={resetContentControls}

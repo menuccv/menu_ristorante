@@ -14,13 +14,13 @@
 .external-menu__header {
   text-align: center;
   padding-top: 0;
-  padding-bottom: 6.8mm;
+  padding-bottom: 4.08mm;
   display: grid;
   justify-items: center;
 }
 
 .external-menu__logo {
-  width: 58mm;
+  width: 40.6mm;
   height: auto;
   max-height: 10mm;
   object-fit: contain;

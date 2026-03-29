@@ -6,6 +6,7 @@ describe('SidebarControls', () => {
   it('renderizza controlli principali e invoca callback', () => {
     const onChangeView = vi.fn()
     const onPrint = vi.fn()
+    const onExportPdf = vi.fn()
     const onAdjustContentControl = vi.fn()
     const onResetContentControls = vi.fn()
     const onSaveSectionTitleTranslations = vi.fn()
@@ -26,11 +27,13 @@ describe('SidebarControls', () => {
         sectionTitleTranslations={{}}
         onSaveSectionTitleTranslations={onSaveSectionTitleTranslations}
         onPrint={onPrint}
+        onExportPdf={onExportPdf}
       />,
     )
 
     fireEvent.click(screen.getByRole('button', { name: 'INGLESE' }))
     fireEvent.click(screen.getByRole('button', { name: 'Stampa' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Esporta PDF' }))
     fireEvent.click(screen.getByLabelText('Zoom Menù diminuisci'))
     fireEvent.click(screen.getByLabelText('Sposta Menù aumenta'))
     fireEvent.click(screen.getByRole('button', { name: 'Reset Contenuto' }))
@@ -42,6 +45,7 @@ describe('SidebarControls', () => {
 
     expect(onChangeView).toHaveBeenCalledWith('EN')
     expect(onPrint).toHaveBeenCalledTimes(1)
+    expect(onExportPdf).toHaveBeenCalledTimes(1)
     expect(onAdjustContentControl).toHaveBeenCalledWith('zoomPercent', 'decrease')
     expect(onAdjustContentControl).toHaveBeenCalledWith('offsetYmm', 'increase')
     expect(onResetContentControls).toHaveBeenCalledTimes(1)
