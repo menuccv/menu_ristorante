@@ -39,4 +39,7 @@ Allineare nel tempo:
 
 - anteprima in app
 - print preview browser
+- export PDF da browser (`Esporta PDF` -> dialogo nativo stampa -> `Salva come PDF`)
 - foglio stampato reale
+
+L'export PDF adotta volutamente lo stesso motore di stampa nativo (`window.print`) per massimizzare coerenza di impaginazione e proporzioni con preview e stampa finale.

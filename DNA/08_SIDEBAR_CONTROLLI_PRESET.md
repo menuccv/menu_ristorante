@@ -12,6 +12,7 @@
 - Pulsante `Reset Contenuto`
 - Pulsante `Translate Titoli` (modale locale IT/EN)
 - Azione `Stampa`
+- Azione `Esporta PDF` (rosso, testo bianco)
 - Pulsante link `Google Sheet` (verde, nuova tab)
 
 ## Regole layout sidebar consolidate
@@ -23,6 +24,7 @@
 - Pulsanti `- / +` invariati (`2.4rem`)
 - Box valori centrali ridotti con larghezza canonica (`4.05rem`)
 - Nessun titolo box visivo (`Vista`, `Contenuto`, `Azioni` rimossi)
+- Ordine azioni consolidato: `Translate Titoli` -> `Stampa` -> `Esporta PDF` -> `Google Sheet`
 
 ## Sincronizzazione dati
 

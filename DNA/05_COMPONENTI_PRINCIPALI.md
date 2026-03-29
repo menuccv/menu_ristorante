@@ -2,12 +2,13 @@
 
 ## `src/app/App.tsx`
 
-Composizione shell e collegamento eventi principali (`print`, cambio vista, traduzioni titoli sezione).
+Composizione shell e collegamento eventi principali (`print`, export PDF via print nativo, cambio vista, traduzioni titoli sezione).
 
 ## `src/app/components/SidebarControls.tsx`
 
 - Switch vista (`MenuView`): IT/EN/EXTERNAL con etichette UI `ITALIANO`/`INGLESE`/`ESTERNO`.
 - Azione: stampa vista corrente (`Stampa`).
+- Azione: export PDF (`Esporta PDF`) usando lo stesso flusso nativo della stampa browser.
 - Azione: apertura modale `Translate Titoli`.
 - Controlli contenuto (solo area contenuto A4): zoom, offset verticale, font globale, interspazio globale.
 - Reset rapido dei controlli contenuto.

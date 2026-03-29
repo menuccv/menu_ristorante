@@ -35,6 +35,17 @@
     display: block;
   }
 
+  .preview-pane__sheet-frame {
+    width: auto;
+    min-height: 0;
+  }
+
+  .preview-pane__sheet-scale {
+    width: auto;
+    transform: none;
+    transform-origin: top left;
+  }
+
   .a4-sheet {
     --sheet-ink-900: #151515;
     --sheet-ink-700: #2f2f2f;

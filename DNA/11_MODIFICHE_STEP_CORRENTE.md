@@ -761,3 +761,19 @@ Data aggiornamento: 2026-03-29
 6. Copertura test aggiornata:
    - `src/state/contentControls.test.ts`
    - `src/state/settingsStore.test.ts`
+
+## Aggiornamento successivo - Export PDF sidebar + tuning EXTERNAL finale
+
+Data aggiornamento: 2026-03-29
+
+1. Sidebar azioni aggiornata con nuovo pulsante `Esporta PDF`:
+   - posizione: sopra `Google Sheet`
+   - stile: sfondo rosso, testo bianco.
+2. Flusso `Esporta PDF` collegato allo stesso motore nativo della stampa (`window.print`) per mantenere coerenza tra preview app, print preview browser, PDF e stampa finale.
+3. Tuning EXTERNAL:
+   - logo ridotto del 30% (`width: 58mm -> 40.6mm`, proporzione invariata con `height: auto`)
+   - spazio `logo -> menu` ridotto del 40% (`padding-bottom: 6.8mm -> 4.08mm`)
+   - posizione logo non modificata.
+4. Test aggiornati:
+   - `src/app/components/SidebarControls.test.tsx` (callback pulsante `Esporta PDF`)
+   - `src/app/App.test.tsx` (invocazione print anche da `Esporta PDF`).

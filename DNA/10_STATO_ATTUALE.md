@@ -10,6 +10,7 @@ Stato operativo avanzato e stabile su base frontend-only, con flusso completo da
 - Tre viste attive (`MenuView`): `IT`, `EN`, `EXTERNAL`.
 - Etichette sidebar: `ITALIANO`, `INGLESE`, `ESTERNO`.
 - Pulsante stampa attivo (`window.print`).
+- Pulsante `Esporta PDF` attivo in sidebar (sopra `Google Sheet`, stile rosso testo bianco), collegato al flusso stampa nativo.
 - Nessun pulsante reload manuale: sync foglio automatica.
 - Integrazione Google Sheet read-only via CSV.
 - Parsing e mapping tipizzato dei dati menu.
@@ -20,6 +21,9 @@ Stato operativo avanzato e stabile su base frontend-only, con flusso completo da
 - CSS template consolidato in due moduli separati:
   - `menu-template.css` (logica IT/EN + regole condivise foglio A4)
   - `external-menu-template.css` (solo EXTERNAL)
+- Tuning EXTERNAL corrente:
+  - logo `logo_ccv.png` ridotto a `40.6mm` mantenendo proporzione (`height: auto`)
+  - spazio `logo -> menu` ridotto (`external-menu__header.padding-bottom: 4.08mm`)
 - Regola layout categoria consolidata:
   - distanza titolo->primo piatto uniforme
   - distanza titolo->primo piatto invariata anche quando cambia `Interspazio righe`
