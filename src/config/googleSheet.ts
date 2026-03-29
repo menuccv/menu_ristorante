@@ -1,4 +1,10 @@
-export type SheetFieldKey = 'category' | 'titleIt' | 'titleEn' | 'price' | 'allergens'
+export type SheetFieldKey =
+  | 'category'
+  | 'categoryEn'
+  | 'titleIt'
+  | 'titleEn'
+  | 'price'
+  | 'allergens'
 
 export const GOOGLE_SHEET_ID = '1TVHaO3bM4WALAey-TXNWYJh--RiGUheAaoU00gamJpY'
 export const MENU_SHEET_GID = '1122482173'
@@ -13,6 +19,14 @@ export const IS_GOOGLE_SHEET_CONFIGURED = GOOGLE_SHEET_CSV_URL.length > 0
 
 export const SHEET_FIELD_ALIASES: Record<SheetFieldKey, string[]> = {
   category: ['category', 'categoria', 'categoria menu', 'cat'],
+  categoryEn: [
+    'category en',
+    'categoria en',
+    'categoria eng',
+    'categoria english',
+    'section en',
+    'sezione en',
+  ],
   titleIt: [
     'title it',
     'titolo it',

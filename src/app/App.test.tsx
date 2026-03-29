@@ -20,6 +20,7 @@ describe('App', () => {
             id: '1',
             order: 0,
             category: 'Primi',
+            categoryEn: 'Homemade Fresh Pasta',
             titleIt: 'Risotto',
             titleEn: 'Risotto',
             price: '16',

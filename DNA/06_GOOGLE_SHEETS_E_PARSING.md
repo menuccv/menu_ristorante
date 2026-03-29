@@ -10,6 +10,7 @@
 ## Colonne previste (mapping base)
 
 - `CATEGORIA`
+- `CATEGORIA EN` (opzionale, usata per i titoli sezione in vista EN)
 - `Titolo IT`
 - `Titolo EN`
 - `PREZZO`

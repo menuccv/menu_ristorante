@@ -96,7 +96,12 @@ export function InternalMenuTemplate({
           >
             <h3 className="menu-section__title">
               <span>
-                {resolveSectionTitle(group.category, language, sectionTitleTranslations)}
+                {resolveSectionTitle(
+                  group.category,
+                  language,
+                  sectionTitleTranslations,
+                  group.categoryEn,
+                )}
               </span>
             </h3>
             <div className="menu-section__content">

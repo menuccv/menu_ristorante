@@ -791,3 +791,19 @@ Data aggiornamento: 2026-03-29
    - validazione payload non CSV (`menuRepository.test.ts`)
    - normalizzazione header (`csvParser.test.ts`).
 6. Ripristinata compatibilita locale dei gate `check/build` rimuovendo l'opzione TypeScript non supportata `erasableSyntaxOnly` dai `tsconfig` del progetto.
+
+## Aggiornamento successivo - Titoli sezione EN persistenti cross-device via Google Sheet
+
+Data aggiornamento: 2026-03-29
+
+1. Esteso il mapping foglio con colonna opzionale `Categoria EN`.
+2. `MenuItem` aggiornato con campo `categoryEn`.
+3. Risoluzione titoli sezione in vista `EN` aggiornata con priorita:
+   - `Categoria EN` (foglio)
+   - `Translate Titoli` locale (`titleEn`)
+   - fallback locali/categoria originale.
+4. Vista `IT` e vista `EXTERNAL` lasciate invariate nella logica di resa categorie.
+5. Aggiunti test di regressione su:
+   - mapping `Categoria EN`
+   - grouping con `categoryEn`
+   - priorita risoluzione titoli sezione EN.

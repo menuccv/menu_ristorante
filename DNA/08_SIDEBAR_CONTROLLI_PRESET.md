@@ -65,6 +65,7 @@ Il guardrail tipografico usa soglia dinamica aggiornata (`MAX_CATEGORY_LAYOUT_PR
 - Fonte: categorie reali rilevate dal menu caricato.
 - Gestione: modale `Translate Titoli` con campi `Titolo IT` e `Titolo EN` per categoria.
 - Persistenza: solo locale app (settings), nessuna scrittura su Google Sheet.
+- In vista `EN`, se il foglio fornisce `Categoria EN`, questo valore ha priorita sui valori locali della modale.
 - Fallback:
   - vista `IT`: `Titolo IT` se presente, altrimenti categoria originale
-  - vista `EN`: `Titolo EN` se presente, altrimenti `Titolo IT`, altrimenti categoria originale
+  - vista `EN`: `Categoria EN` (foglio) -> `Titolo EN` (locale) -> `Titolo IT` (locale) -> categoria originale

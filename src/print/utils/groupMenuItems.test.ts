@@ -8,6 +8,7 @@ describe('groupMenuItems', () => {
         id: '2',
         order: 2,
         category: 'Primi',
+        categoryEn: 'Homemade Fresh Pasta',
         titleIt: 'Pasta',
         titleEn: 'Pasta',
         price: '14',
@@ -17,6 +18,7 @@ describe('groupMenuItems', () => {
         id: '1',
         order: 1,
         category: 'Antipasti',
+        categoryEn: 'Starters',
         titleIt: 'Bruschetta',
         titleEn: 'Bruschetta',
         price: '9',
@@ -26,6 +28,7 @@ describe('groupMenuItems', () => {
         id: '3',
         order: 3,
         category: 'Primi',
+        categoryEn: 'Homemade Fresh Pasta',
         titleIt: 'Risotto',
         titleEn: 'Risotto',
         price: '16',
@@ -35,7 +38,9 @@ describe('groupMenuItems', () => {
 
     expect(grouped).toHaveLength(2)
     expect(grouped[0].category).toBe('Antipasti')
+    expect(grouped[0].categoryEn).toBe('Starters')
     expect(grouped[1].category).toBe('Primi')
+    expect(grouped[1].categoryEn).toBe('Homemade Fresh Pasta')
     expect(grouped[1].items.map((item) => item.id)).toEqual(['2', '3'])
   })
 })

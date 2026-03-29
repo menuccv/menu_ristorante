@@ -29,6 +29,7 @@ export function mapSheetRows(rows: string[][]): MenuItem[] {
   const headers = rows[0].map(normalizeHeader)
 
   const categoryIndex = findColumnIndex(headers, 'category')
+  const categoryEnIndex = findColumnIndex(headers, 'categoryEn')
   const titleItIndex = findColumnIndex(headers, 'titleIt')
   const titleEnIndex = findColumnIndex(headers, 'titleEn')
   const priceIndex = findColumnIndex(headers, 'price')
@@ -49,6 +50,7 @@ export function mapSheetRows(rows: string[][]): MenuItem[] {
 
   return rows.slice(1).reduce<MenuItem[]>((items, row, rowIndex) => {
     const category = readCell(row, categoryIndex)
+    const categoryEn = readCell(row, categoryEnIndex)
     const titleIt = readCell(row, titleItIndex)
     const titleEn = readCell(row, titleEnIndex)
 
@@ -60,6 +62,7 @@ export function mapSheetRows(rows: string[][]): MenuItem[] {
       id: buildItemId(rowIndex, category, titleIt || titleEn),
       order: rowIndex,
       category,
+      categoryEn,
       titleIt,
       titleEn,
       price: readCell(row, priceIndex),

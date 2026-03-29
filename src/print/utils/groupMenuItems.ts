@@ -2,6 +2,7 @@ import { type MenuItem } from '../../domain/menu'
 
 export interface GroupedMenuItems {
   category: string
+  categoryEn: string
   items: MenuItem[]
 }
 
@@ -20,6 +21,7 @@ export function groupMenuItems(items: MenuItem[]): GroupedMenuItems[] {
 
   return [...byCategory.entries()].map(([category, groupItems]) => ({
     category,
+    categoryEn: groupItems.find((item) => item.categoryEn.trim().length > 0)?.categoryEn ?? '',
     items: groupItems,
   }))
 }

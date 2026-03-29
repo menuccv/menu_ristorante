@@ -36,5 +36,5 @@ Contenitore comune pagina A4 con header, body e footer opzionale; il wrapper `.a
 
 ## Template
 
-- `InternalMenuTemplate.tsx`: vista IT/EN interna con risoluzione titoli sezione tradotti.
+- `InternalMenuTemplate.tsx`: vista IT/EN interna con risoluzione titoli sezione tradotti; in EN priorita a `Categoria EN` dal foglio quando presente.
 - `ExternalMenuTemplate.tsx`: vista esterna dedicata (solo logo locale `logo_ccv.png` centrato, categorie in italiano, piatto IT + EN, prezzo a destra, senza allergeni riga e senza footer tecnico).

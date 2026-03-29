@@ -33,6 +33,7 @@ Toni chiari caldi (bianco, crema, marrone soft) definiti in `src/styles/index.cs
 
 - `GOOGLE_SHEET_CSV_URL` in `src/config/googleSheet.ts`
 - `SHEET_FIELD_ALIASES` in `src/config/googleSheet.ts`
+  - include alias colonna opzionale `categoryEn` (`Categoria EN`)
 - `STORAGE_KEY` settings in `src/state/settingsStore.ts`:
   - chiave corrente: `menu-print-app-settings-v3`
   - baseline marker: `contentControlsBaselineVersion = 2`

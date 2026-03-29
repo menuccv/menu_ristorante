@@ -22,10 +22,11 @@ export function resolveSectionTitle(
   category: string,
   language: SectionTitleLanguage,
   translations: SectionTitleTranslations,
+  categoryEnFromSheet?: string,
 ): string {
   const resolved = getResolvedPair(category, translations)
   if (language === 'IT') {
     return resolved.titleIt
   }
-  return resolved.titleEn
+  return normalizeText(categoryEnFromSheet) || resolved.titleEn
 }

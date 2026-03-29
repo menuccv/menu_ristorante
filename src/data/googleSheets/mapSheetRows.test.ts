@@ -14,6 +14,7 @@ describe('mapSheetRows', () => {
     expect(items).toHaveLength(2)
     expect(items[0]).toMatchObject({
       category: 'Primi',
+      categoryEn: '',
       titleIt: 'Risotto',
       titleEn: 'Risotto',
       price: '16',
@@ -33,10 +34,26 @@ describe('mapSheetRows', () => {
     expect(items).toHaveLength(1)
     expect(items[0]).toMatchObject({
       category: 'Primi',
+      categoryEn: '',
       titleIt: 'Tagliatelle al ragù.',
       titleEn: 'Tagliatelle with meat sauce.',
       price: '18',
       allergens: '1,5,6,10',
+    })
+  })
+
+  it('mappa la colonna categoria EN quando presente', () => {
+    const rows = [
+      ['Categoria', 'Categoria EN', 'Titolo IT', 'Titolo EN', 'Prezzo', 'Allergeni'],
+      ['Primi', 'Homemade Fresh Pasta', 'Tagliatelle al ragù.', 'Tagliatelle with meat sauce.', '18', '1,5,6,10'],
+    ]
+
+    const items = mapSheetRows(rows)
+
+    expect(items).toHaveLength(1)
+    expect(items[0]).toMatchObject({
+      category: 'Primi',
+      categoryEn: 'Homemade Fresh Pasta',
     })
   })
 
